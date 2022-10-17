@@ -1,37 +1,12 @@
 /* eslint-disable array-callback-return */
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../UI/Card";
 import MealItem from "./MealItem/MealItem";
 import classes from "./AvailableMeals.module.css";
 
-// const DUMMY_MEALS = [
-//   {
-//     id: "m1",
-//     name: "Sushi",
-//     description: "Finest fish and veggies",
-//     price: 22.99,
-//   },
-//   {
-//     id: "m2",
-//     name: "Schnitzel",
-//     description: "A german specialty!",
-//     price: 16.5,
-//   },
-//   {
-//     id: "m3",
-//     name: "Barbecue Burger",
-//     description: "American, raw, meaty",
-//     price: 12.99,
-//   },
-//   {
-//     id: "m4",
-//     name: "Green Bowl",
-//     description: "Healthy...and green...",
-//     price: 18.99,
-//   },
-// ];
-
 function AvailableMeals() {
+  const [meals, setMeals] = useState([]);
+
   useEffect(() => {
     const fetchMeals = async () => {
       const response = await fetch(
@@ -48,11 +23,12 @@ function AvailableMeals() {
           price: responseData[key].price,
         });
       }
+      setMeals(loadedMeals);
     };
     fetchMeals();
   }, []);
 
-  const meals = DUMMY_MEALS.map((meal) => (
+  const mealsList = meals.map((meal) => (
     <li>
       <MealItem
         key={meal.id}
@@ -66,7 +42,7 @@ function AvailableMeals() {
   return (
     <section className={classes.meals}>
       <Card>
-        <ul>{meals}</ul>
+        <ul>{mealsList}</ul>
       </Card>
     </section>
   );
