@@ -3,7 +3,8 @@ import Modal from "../UI/Modal";
 import CartContext from "../../store/cart-context";
 import CartItem from "./CartItem";
 import classes from "./Cart.module.css";
-import Checkout from "./Checkout";
+// import Checkout from "./CheckoutUseRef";
+import CheckoutTwo from "./CheckoutUseState";
 
 function Cart(props) {
   const [isCheckout, setIsCheckout] = useState(false);
@@ -84,7 +85,7 @@ function Cart(props) {
           <span>{totalAmount}</span>
         </div>
         {isCheckout && (
-          <Checkout
+          <CheckoutTwo
             onConformed={submitOrderHandeler}
             onCancel={props.onClose}
           />
