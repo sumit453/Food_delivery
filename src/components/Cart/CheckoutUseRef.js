@@ -12,7 +12,6 @@ const Checkout = (props) => {
     city: true,
   });
 
-  //have to see the toch condition later and use custom hooks for no code repitation
   const nameInputRef = useRef();
   const streetInputRef = useRef();
   const postalCodeInputRef = useRef();

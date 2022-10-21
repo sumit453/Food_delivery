@@ -30,7 +30,6 @@ function Cart(props) {
   }
 
   const submitOrderHandeler = async (userData) => {
-    //have to chack the error later
     setIsSubmitting(true);
     await fetch(
       "https://react-http-5dcb5-default-rtdb.firebaseio.com/orders.json",
